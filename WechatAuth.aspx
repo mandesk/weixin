@@ -20,20 +20,20 @@
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
-        string appid = ConfigurationManager.AppSettings["appid"];
-        string secret = ConfigurationManager.AppSettings["secret"];
+        string appid = "wxde5cb829d172ed53";
+        string secret = "06c1700b7a4ead7dc4a51e62714feb45";
         string at = "";
-        if (HttpRuntime.Cache["at"] != null)
-            at = HttpRuntime.Cache["at"].ToString();
-        else
-        {
+        //if (HttpRuntime.Cache["at"] != null)
+        //    at = HttpRuntime.Cache["at"].ToString();
+        //else
+        //{
             at = GetAccess_Token(appid, secret);
-            HttpRuntime.Cache.Add("at", at, null,
-           DateTime.Now.AddHours(2),
-           System.Web.Caching.Cache.NoSlidingExpiration,
-           System.Web.Caching.CacheItemPriority.NotRemovable,
-           null);
-        }
+        //    HttpRuntime.Cache.Add("at", at, null,
+        //   DateTime.Now.AddHours(2),
+        //   System.Web.Caching.Cache.NoSlidingExpiration,
+        //   System.Web.Caching.CacheItemPriority.NotRemovable,
+        //   null);
+        //}
         string code = this.Request.QueryString["code"];
         //string state = this.Request.QueryString["STATE"];
         string ares = RequestByGet("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid + "&secret=" + secret + "&code=" + code + "&grant_type=authorization_code");
