@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="WechatTest.WechatAuth" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="System.Web.UI.Page" %>
 
 <%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.IO" %>
