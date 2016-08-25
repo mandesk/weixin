@@ -40,11 +40,10 @@
         string access_token = GetJsonValue(ares, "access_token");
         string refresh_token = GetJsonValue(ares, "refresh_token");
         string openid = GetJsonValue(ares, "openid");
-        ares = RequestByGet("https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + at + "&openid=" + openid + "&lang=zh_CN");
+        ares = RequestByGet("https://api.weixin.qq.com/sns/userinfo?access_token=" + at + "&openid=" + openid + "&lang=zh_CN");
         string subs = GetJsonValue(ares, "subscribe");
         if (subs == "1")
         {
-            Response.Output.Write("已关注用户");
             Response.Output.Write(ares);
         }
         else
