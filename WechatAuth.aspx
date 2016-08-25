@@ -22,12 +22,12 @@
     {
         string appid = "wxde5cb829d172ed53";
         string secret = "06c1700b7a4ead7dc4a51e62714feb45";
-        //string at = "";
+        string at = "";
         //if (HttpRuntime.Cache["at"] != null)
         //    at = HttpRuntime.Cache["at"].ToString();
         //else
         //{
-        //    at = GetAccess_Token(appid, secret);
+            at = GetAccess_Token(appid, secret);
         //    HttpRuntime.Cache.Add("at", at, null,
         //   DateTime.Now.AddHours(2),
         //   System.Web.Caching.Cache.NoSlidingExpiration,
@@ -40,7 +40,8 @@
         string access_token = GetJsonValue(ares, "access_token");
         string refresh_token = GetJsonValue(ares, "refresh_token");
         string openid = GetJsonValue(ares, "openid");
-        ares = RequestByGet("https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid + "&lang=zh_CN");
+        ares = RequestByGet("https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + at + "&openid=" + openid + "&lang=zh_CN");
+        //ares = RequestByGet("https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid + "&lang=zh_CN");
         string subs = GetJsonValue(ares, "subscribe");
         if (subs == "1")
         {
