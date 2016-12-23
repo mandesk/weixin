@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
 <div id="result"></div>
+<div id="oid"></div>
 <a id="ServiceName" href="at.html">4654654</a>
 </body>
-<script>
-if (typeof(Storage) !== "undefined") {
+<script type="text/javascript">
+	var openid="";
+	var c_start=-1;
+	var c_end=-1;
+    var c_openId="openId";  
+        if (document.cookie.length > 0) {  
+            c_start = document.cookie.indexOf(c_openId + "=");  
+            if (c_start != -1) {  
+                c_start = c_start + c_openId.length + 1;  
+                c_end = document.cookie.indexOf(";", c_start);  
+                if (c_end == -1)  
+                    c_end = document.cookie.length;  
+                openId=unescape(document.cookie.substring(c_start, c_end));
+	
+    document.getElementById("oid").innerHTML = openId;			
     // Store
 	localStorage.setItem("lastname", "Smith");
     // Retrieve
     document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-} else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
 </script>
 </html>
